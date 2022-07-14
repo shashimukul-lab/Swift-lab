@@ -211,6 +211,31 @@ struct LinkedList<T : Equatable> {
 			return
 		}
 		deleteNodeRec(&tmp.next, data)
+	}
+
+	mutating func delete(at position : Int) {
+		guard let _ = head else {
+			return
+		}
+		var tmp = head
+		if position == 0 {
+			head = tmp?.next
+			return
+		}
+		//var pos = 0
+		for _ in 0..<position - 1 {
+			tmp = tmp?.next
+		}
+		// while(tmp != nil && pos != position - 1) {
+		// 	tmp = tmp?.next
+		// 	pos += 1
+		// }
+		if tmp != nil && tmp?.next != nil {
+			tmp?.next = tmp?.next?.next
+		}
+		else {
+			print("Position is outside linkedlist count")
+		}
 	}  
 }
 
@@ -238,13 +263,15 @@ ll.insertAfter(ll.head!.next, 4)
 print(ll.description)
 ll.append(5)
 print(ll.description)
-ll.pop()
-print(ll.description)
-ll.removeLast()
-print(ll.description)
+//ll.pop()
+//print(ll.description)
+//ll.removeLast()
+//print(ll.description)
 //ll.deleteNode(4)
-var head = ll.head
-ll.deleteNodeRec(&head, 4)
+//var head = ll.head
+//ll.deleteNodeRec(&head, 4)
+//print(ll.description)
+ll.delete(at : 5)
 print(ll.description)
 
 
