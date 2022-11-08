@@ -24,13 +24,13 @@ let node2 = Node(data : 2)
 let node3 = Node(data : 3)
 let node4 = Node(data : 4)
 let node5 = Node(data : 5)
-let node6 = Node(data : 6)
+//let node6 = Node(data : 6)
 node1.next = node2
 node2.next = node3
 node3.next = node4
 node4.next = node5
-node5.next = node6
-print(node1)
+//node5.next = node6
+//print(node1)
 
 class Solution {
 
@@ -61,4 +61,5 @@ class Solution {
 
 let s = Solution()
 let mid = s.middleNode(node1)
-print(mid?.data ?? Int.min)
+print(mid!)
+//print(mid?.data ?? Int.min)
