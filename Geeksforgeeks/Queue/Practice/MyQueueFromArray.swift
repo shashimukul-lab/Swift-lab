@@ -138,8 +138,9 @@ extension Queue : CustomStringConvertible {
 			return "Queue is empty"
 		}
 		var i = front
-		var str = ""
-		while(i % capacity != (rear + 1)) {
+		var str = "\(array[i])\n"
+		i += 1
+		while(i % capacity != (rear + 1) % capacity) {
 			str += "\(array[i])" + "\n"
 			i += 1
 		}
@@ -159,15 +160,15 @@ extension Queue : CustomStringConvertible {
 // print(queue.first)
 // print(queue.last)
 
-var queue = Queue<String>(capacity : 1000)
+var queue = Queue<String>(capacity : 4)
 queue.enqueue("first")
 queue.enqueue("second")
 queue.enqueue("third")
 queue.enqueue("fourth")
 print(queue)
-queue.dequeue()
-print(queue.first)
-print(queue.last)
+//queue.dequeue()
+//print(queue.first)
+//print(queue.last)
 
 
 
