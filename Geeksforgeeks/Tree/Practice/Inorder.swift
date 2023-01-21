@@ -45,3 +45,4 @@ tree.root?.right?.left = Node(50)
 var r = [Int]()
 tree.inorder(tree.root, &r)
 print(r)
+
