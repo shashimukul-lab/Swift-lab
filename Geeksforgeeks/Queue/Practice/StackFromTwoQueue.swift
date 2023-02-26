@@ -18,8 +18,11 @@ struct Queue {
 		return rear == nil
 	}
 
+	var size = 0
+
 	mutating func enqueue(_ data : Int) {
 		let n = Node(data)
+		size += 1
 		if isEmpty {
 			front = n
 			rear = front
@@ -39,6 +42,7 @@ struct Queue {
 		if front == nil {
 			rear = nil
 		}
+		size -= 1
 		return e
 	}
 }
@@ -56,15 +60,37 @@ struct Stack {
 	}
 
 	@discardableResult
-	mutating func dequeue() -> Int? {
+	mutating func pop() -> Int? {
 		guard !isEmpty else {
 			return nil
 		}
-		while !q1.isEmpty {
+		while q1.size != 1 {
 			if let e = q1.dequeue() {
 				q2.enqueue(e)
 			}
 		}
-		return q2.dequeue()
+		
+		defer {
+			let q = q1
+			q1 = q2
+			q2 = q
+		}
+
+		return q1.dequeue()
 	}
 }
+
+// var st = Stack()
+// st.push(2)
+// st.push(3)
+// print(st.pop()!)
+// st.push(4)
+// print(st.pop()!)
+
+
+var st = Stack()
+st.push(2)
+print(st.pop()!)
+print(st.pop())
+st.push(3)
+//print(st.pop()!)
